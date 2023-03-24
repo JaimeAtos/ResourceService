@@ -1,5 +1,7 @@
-﻿using Application.Features.Resource.Commands.CreateResourceCommand;
+﻿using Application.Behaviours;
+using Application.Features.Resources.Commands.CreateResourceCommand;
 using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -11,5 +13,6 @@ public static class DependencyContainer
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateResourceCommand>());
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
     }
 }

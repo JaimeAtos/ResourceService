@@ -3,7 +3,6 @@ C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\Re
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.AssemblyInfoInputs.cache
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.AssemblyInfo.cs
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.csproj.CoreCompileInputs.cache
-C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\appsettings.json
