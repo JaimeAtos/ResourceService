@@ -1,5 +1,6 @@
 ﻿using Application.DTOs;
 using Application.Features.Resources.Commands.CreateResourceCommand;
+using Application.Features.ResourcesExtraSkills.CreateResourceExtraSkillsCommand;
 using AutoMapper;
 using Domain.Entities;
 
@@ -11,9 +12,11 @@ public class GeneralProfile : Profile
     {
         #region DTOs
         CreateMap<Resource, ResourceDto>();
+        CreateMap<ResourceExtraSkills, ResourceExtraSkillsDto>();
         #endregion
         #region Commands
         CreateMap<CreateResourceCommand, Resource>();
+        CreateMap<CreateResourceExtraSkillsCommand, ResourceExtraSkills>();
         #endregion
     }
 }

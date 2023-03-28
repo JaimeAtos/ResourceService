@@ -10,8 +10,6 @@ public class DeleteResourceController : BaseApiController
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteResource(Guid id)
     {
-        
-
         return await ProcessDeleteResource(id);
     }
 

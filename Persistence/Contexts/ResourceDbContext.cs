@@ -1,10 +1,7 @@
 ﻿using Application.Interfaces;
-using Atos.EFCore.Extensions;
 using Domain.Commons;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.CodeAnalysis;
-using System.Security;
 
 namespace Persistence.Contexts;
 public class ResourceDbContext : DbContext

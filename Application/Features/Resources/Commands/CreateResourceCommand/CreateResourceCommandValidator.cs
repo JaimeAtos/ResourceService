@@ -6,6 +6,9 @@ public class CreateResourceCommandValidator : AbstractValidator<CreateResourceCo
 {
     public CreateResourceCommandValidator()
     {
+        RuleFor(r => r.FullName).NotEmpty().WithMessage("{PropertyName} cannot be empty")
+           .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
+
         RuleFor(r => r.WorkEmail).NotEmpty().WithMessage("{PropertyName} cannot be empty")
             .EmailAddress().WithMessage("{PropertyName} must be a valid email address")
             .MaximumLength(120).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
