@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace ResourceWebApi.Controllers.v1.Resources;
 
 
-[ApiVersion("1.0")]
 public class DeleteResourceController : BaseApiController
 {
     [HttpDelete("{id}")]

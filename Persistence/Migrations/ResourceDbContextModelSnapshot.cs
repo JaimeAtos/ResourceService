@@ -169,8 +169,9 @@ namespace Persistence.Migrations
                     b.Property<Guid>("SkillId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("SkillName")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("SkillName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("State")
                         .HasColumnType("bit");

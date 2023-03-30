@@ -84,3 +84,4 @@ C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\re
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.pdb
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.genruntimeconfig.cache
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ref\ResourceWebApi.dll
+C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.MvcApplicationPartsAssemblyInfo.cs
