@@ -13,7 +13,7 @@ public class ResourceExtraSkillsConfig : IEntityTypeConfiguration<ResourceExtraS
         builder.Property(p => p.Id).HasDefaultValue("NEWID()");
 
         builder.Property(p => p.Title).HasDefaultValue("nvarchar(50)");
-        builder.Property(p => p.ResourceId).HasDefaultValue("UNIQUEIDENTIFIER");
+        builder.Property(p => p.ResourceId).HasDefaultValue("NEWID()");
         builder.Property(p => p.ExperienceOveralTypeTag).HasDefaultValue("nvarchar(30)");
         builder.Property(p => p.BriefDescription).HasDefaultValue("nvarchar(60)");
         builder.Property(p => p.Point).HasMaxLength(3);

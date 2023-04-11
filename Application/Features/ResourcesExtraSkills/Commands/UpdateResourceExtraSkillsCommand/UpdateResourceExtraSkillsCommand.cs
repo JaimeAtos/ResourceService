@@ -10,9 +10,8 @@ namespace Application.Features.ResourcesExtraSkills.UpdateResourceExtraSkillsCom
 public class UpdateResourceExtraSkillsCommand : IRequest<Response<Guid>>
 {
     public Guid Id { get; set; }
-    public string FullName { get; set; }
     public string Title { get; set; }
-    public string ResourceId { get; set; }
+    public Guid ResourceId { get; set; }
     public string ExperienceOveralTypeTag { get; set; } //Certification, Course,
     public string BriefDescription { get; set; }
     public byte Point { get; set; }
@@ -45,7 +44,6 @@ public class UpdateResourceExtraSkillsCommandHandler : IRequestHandler<UpdateRes
         if (resourceExtraSkills is null)
             throw new ApiException($"Record with id {request.Id} not founded");
 
-        resourceExtraSkills.FullName = request.FullName;
         resourceExtraSkills.Title = request.Title;
         resourceExtraSkills.ResourceId = request.ResourceId;
         resourceExtraSkills.ExperienceOveralTypeTag = request.ExperienceOveralTypeTag;

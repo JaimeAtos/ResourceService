@@ -18,6 +18,6 @@ public class CreateResourceSkillsCommandValidator : AbstractValidator<CreateReso
            .Matches(@"^[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?$")
            .WithMessage("{PropertyName} must be a valid url");
 
-        RuleFor(r => r.IsComplice).NotEmpty().WithMessage("{PropertyName} cannot be empty");
+        RuleFor(r => r.IsComplice).Must(r => r == false || r == true);
     }
 }

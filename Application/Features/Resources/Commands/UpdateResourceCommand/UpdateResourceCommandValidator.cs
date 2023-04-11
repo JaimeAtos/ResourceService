@@ -13,11 +13,11 @@ public class UpdateResourceCommandValidator : AbstractValidator<UpdateResourceCo
            .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
 
         RuleFor(r => r.WorkEmail).NotEmpty().WithMessage("{PropertyName} cannot be empty")
-            .EmailAddress().WithMessage("{PropertyName} must be a valid email address")
+            .Matches(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").WithMessage("{PropertyName} must be a valid email address")
             .MaximumLength(120).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
 
         RuleFor(r => r.PersonalEmail).NotEmpty().WithMessage("{PropertyName} cannot be empty")
-            .EmailAddress().WithMessage("{PropertyName} must be a valid email address")
+            .Matches(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?").WithMessage("{PropertyName} must be a valid email address")
             .MaximumLength(120).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
 
         RuleFor(r => r.Phone).NotEmpty().WithMessage("{PropertyName} cannot be empty")

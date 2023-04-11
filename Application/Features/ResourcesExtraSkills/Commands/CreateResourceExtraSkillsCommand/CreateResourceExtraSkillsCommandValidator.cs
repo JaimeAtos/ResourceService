@@ -6,8 +6,6 @@ namespace Application.Features.ResourcesExtraSkills.CreateResourceExtraSkillsCom
     {
         public CreateResourceExtraSkillsCommandValidator()
         {
-            RuleFor(r => r.FullName).NotEmpty().WithMessage("{PropertyName} cannot be empty")
-           .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
 
             RuleFor(r => r.Title).NotEmpty().WithMessage("{PropertyName} cannot be empty")
            .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
@@ -23,7 +21,7 @@ namespace Application.Features.ResourcesExtraSkills.CreateResourceExtraSkillsCom
             //TODO: Investigar como hacer funcionar fluent validation con byte types
             //RuleFor(r => r.Point).InclusiveBetween(0, 100);
 
-            RuleFor(r => r.IsApproved).NotEmpty().WithMessage("{PropertyName} cannot be empty");
+            RuleFor(r => r.IsApproved).Must(r => r == false || r == true);
         }
     }
 }

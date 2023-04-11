@@ -2,7 +2,6 @@
 {
     public class ResourceExtraSkillsDto
     {
-        public string FullName { get; set; }
         public string Title { get; set; }
         public string ExperienceOveralTypeTag { get; set; }
         public string BriefDescription { get; set; }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Contexts;
 
@@ -11,9 +12,10 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(ResourceDbContext))]
-    partial class ResourceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230404154149_NombreDeLaMigracion")]
+    partial class NombreDeLaMigracion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -88,7 +90,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Resource", (string)null);
+                    b.ToTable("Resource");
                 });
 
             modelBuilder.Entity("Domain.Entities.ResourceExtraSkills", b =>
@@ -108,6 +110,10 @@ namespace Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
 
@@ -117,8 +123,9 @@ namespace Persistence.Migrations
                     b.Property<byte>("Point")
                         .HasColumnType("tinyint");
 
-                    b.Property<Guid>("ResourceId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("ResourceId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("State")
                         .HasColumnType("bit");
@@ -135,7 +142,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ResourceExtraSkills", (string)null);
+                    b.ToTable("ResourceExtraSkills");
                 });
 
             modelBuilder.Entity("Domain.Entities.ResourceSkills", b =>
@@ -149,9 +156,6 @@ namespace Persistence.Migrations
 
                     b.Property<bool>("IsComplice")
                         .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastDateModified")
-                        .HasColumnType("datetime2");
 
                     b.Property<Guid>("ResourceId")
                         .HasColumnType("uniqueidentifier");
@@ -177,12 +181,9 @@ namespace Persistence.Migrations
                     b.Property<Guid>("UserCreatorId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserLastModify")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.ToTable("ResourceSkills", (string)null);
+                    b.ToTable("ResourceSkills");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,7 +1,9 @@
 using Application;
+using Microsoft.OpenApi.Models;
 using Persistence;
 using ResourceWebApi.Extensions;
 using Shared;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -14,7 +16,18 @@ builder.Services.AddPersistence(configuration);
 builder.Services.AddSharedLayer();
 builder.Services.AddApiVersioningExtension();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen( c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Resource Service Api",
+        Description = "Microservice with all CRUD actions to create resources"
+    });
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
+});
 
 var app = builder.Build();
 

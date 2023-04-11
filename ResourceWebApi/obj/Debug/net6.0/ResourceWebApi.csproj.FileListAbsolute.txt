@@ -11,6 +11,7 @@ C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\Re
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\ResourceWebApi.runtimeconfig.json
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\ResourceWebApi.dll
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\ResourceWebApi.pdb
+C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\ResourceWebApi.xml
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\Ardalis.Specification.dll
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\Ardalis.Specification.EntityFrameworkCore.dll
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\bin\Debug\net6.0\AutoMapper.dll
@@ -81,7 +82,7 @@ C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\sc
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.csproj.CopyComplete
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.dll
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\refint\ResourceWebApi.dll
+C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.xml
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.pdb
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.genruntimeconfig.cache
 C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ref\ResourceWebApi.dll
-C:\Users\a875671\source\repos\ResourceService\ResourceWebApi\obj\Debug\net6.0\ResourceWebApi.MvcApplicationPartsAssemblyInfo.cs

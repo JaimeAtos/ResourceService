@@ -8,12 +8,23 @@ namespace ResourceWebApi.Controllers.v1.Resources
     [ApiVersion("1.0")]
     public class ReadResourcesController : BaseApiController
     {
+        /// <summary>
+        /// Endpoint to read a specific resource using them Id
+        /// </summary>
+        /// <param name="id">Guid of the resource</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetResourceById(Guid id)
         {
             return Ok(await Mediator.Send(new GetResourceByIdQuery { Id = id}));
         }
 
+        /// <summary>
+        /// Endpoint to obtain certain resource by use of 
+        /// some filters, we obtain all the resources if
+        /// all the filters are empty
+        /// </summary>
+        /// <returns>All the resources that match with the filter selection</returns>
         [HttpGet]
         public async Task<IActionResult> GetAllResources([FromQuery]GetAllResourceParameters filters)
         {

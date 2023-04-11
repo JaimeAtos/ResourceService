@@ -8,9 +8,6 @@ public class UpdateResourceExtraSkillsCommandValidator : AbstractValidator<Updat
 	{
         RuleFor(r => r.Id).NotEmpty().WithMessage("{PropertyName} cannot be empty");
 
-        RuleFor(r => r.FullName).NotEmpty().WithMessage("{PropertyName} cannot be empty")
-           .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
-
         RuleFor(r => r.Title).NotEmpty().WithMessage("{PropertyName} cannot be empty")
        .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
 
@@ -22,6 +19,6 @@ public class UpdateResourceExtraSkillsCommandValidator : AbstractValidator<Updat
         RuleFor(r => r.BriefDescription).NotEmpty().WithMessage("{PropertyName} cannot be empty")
        .MaximumLength(60).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
 
-        RuleFor(r => r.IsApproved).NotEmpty().WithMessage("{PropertyName} cannot be empty");
+        RuleFor(r => r.IsApproved).Must(r => r == false || r == true);
     }
 }

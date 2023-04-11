@@ -1,7 +1,7 @@
 ﻿using Domain.Commons;
 
 namespace Domain.Entities;
-public class ResourceSkills : EntityBase<Guid, Guid>
+public class ResourceSkills : AuditableEntityBase<Guid, Guid>
 {
     public Guid SkillId { get; set; }
     public Guid ResourceId { get; set; }
