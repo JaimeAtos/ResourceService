@@ -35,7 +35,7 @@ public class DeleteResourceCommandHandler : IRequestHandler<DeleteResourceComman
     {
         var resource = await _repositoryAsync.GetByIdAsync(request.Id);
         if (resource is null)
-            throw new ApiException($"Record with id {request.Id} not founded");
+            throw new ApiException($"Record with id {request.Id} not found");
 
         resource.State = false;
 

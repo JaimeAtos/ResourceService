@@ -6,20 +6,20 @@ namespace ResourceWebApi.Controllers.v1.ResourcesSkills
     [ApiVersion("1.0")]
     public class UpdateResourceSkillsController : BaseApiController
     {
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateResourceSkills(Guid id, UpdateResourceSkillsCommand command)
+        [HttpPut]
+        public Task<IActionResult> UpdateResourceSkills(UpdateResourceSkillsCommand command, CancellationToken cancellationToken = default)
         {
 
-            if (id != command.Id)
-                return BadRequest();
+            if (command is null)
+                throw new ArgumentNullException($"The param {command} cannot be null");
 
-            return await ProcessUpdateResourceSkills(command);
+            return ProcessUpdateResourceSkills(command, cancellationToken);
         }
 
-        private async Task<IActionResult> ProcessUpdateResourceSkills(UpdateResourceSkillsCommand command)
+        private async Task<IActionResult> ProcessUpdateResourceSkills(UpdateResourceSkillsCommand command, CancellationToken cancellationToken = default)
         {
-            var result = await Mediator.Send(command);
-            return Ok(result);
+            await Mediator.Send(command, cancellationToken);
+            return NoContent();
         }
     }
 }

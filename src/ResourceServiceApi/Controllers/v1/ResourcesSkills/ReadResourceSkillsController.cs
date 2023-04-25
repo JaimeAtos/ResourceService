@@ -7,7 +7,7 @@ namespace ResourceWebApi.Controllers.v1.ResourcesSkills
     [ApiVersion("1.0")]
     public class ReadResourceSkillsController : BaseApiController
     {
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetResourceSkillsById")]
         public async Task<IActionResult> GetResourceSkillsById(Guid id)
         {
             return Ok(await Mediator.Send(new GetResourceSkillsByIdQuery { Id = id }));

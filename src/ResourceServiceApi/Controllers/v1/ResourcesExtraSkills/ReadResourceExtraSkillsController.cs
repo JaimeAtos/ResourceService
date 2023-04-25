@@ -7,7 +7,7 @@ namespace ResourceWebApi.Controllers.v1.ResourcesExtraSkills
     [ApiVersion("1.0")]
     public class ReadResourceExtraSkillsController : BaseApiController
     {
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetResourceExtraSkillsById")]
         public async Task<IActionResult> GetResourceExtraSkillsById(Guid id)
         {
             return Ok(await Mediator.Send(new GetResourceExtraSkillsByIdQuery { Id = id }));

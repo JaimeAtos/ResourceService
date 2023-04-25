@@ -9,10 +9,9 @@ namespace Application.Features.ResourcesSkills.Commands.CreateResourceSkillComma
 public class CreateResourceSkillsCommand : IRequest<Response<Guid>>
 {
     public Guid ResourceId { get; set; }
-    public string ResourceName { get; set; }
     public string SkillName { get; set; }
     public string SkillAcceptanceURL { get; set; } // Evidences of Validations
-    public bool IsComplice { get; set; } // False if resource needs to revalidate the skill
+    public bool IsCompliance { get; set; } // False if resource needs to revalidate the skill
 }
 
 public class CreateResourceSkillsCommandHandler : IRequestHandler<CreateResourceSkillsCommand, Response<Guid>>

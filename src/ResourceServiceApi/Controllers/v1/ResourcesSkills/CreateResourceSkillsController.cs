@@ -7,18 +7,18 @@ namespace ResourceWebApi.Controllers.v1.ResourcesSkills
     public class CreateResourceSkillsController : BaseApiController
     {
         [HttpPost]
-        public Task<IActionResult> CreateResourceSkills(CreateResourceSkillsCommand command)
+        public Task<IActionResult> CreateResourceSkills(CreateResourceSkillsCommand command, CancellationToken cancellationToken = default)
         {
             if (command is null)
                 throw new ArgumentNullException($"The param {command} cannot be null");
 
-            return ProcessCreateResourceSkills(command);
+            return ProcessCreateResourceSkills(command, cancellationToken);
         }
 
-        private async Task<IActionResult> ProcessCreateResourceSkills(CreateResourceSkillsCommand command)
+        private async Task<IActionResult> ProcessCreateResourceSkills(CreateResourceSkillsCommand command, CancellationToken cancellationToken = default)
         {
-            var result = await Mediator.Send(command);
-            return Ok(result);
+            var result = await Mediator.Send(command, cancellationToken);
+            return CreatedAtRoute("GetResourceSkillsById", routeValues: new {id = result}, command);
         }
     }
 }

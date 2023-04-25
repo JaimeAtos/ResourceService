@@ -9,6 +9,7 @@ namespace Application.Features.Resources.Commands.UpdateResourceCommand;
 public class UpdateResourceCommand : IRequest<Response<Guid>>
 {
     public Guid Id { get; set; }
+    public string ResourceName { get; set; }
     public string? ResumeUrl { get; set; }
     public string WorkEmail { get; set; }
     public string PersonalEmail { get; set; }
@@ -19,7 +20,6 @@ public class UpdateResourceCommand : IRequest<Response<Guid>>
     public string LocationDescription { get; set; }
     public string NessieID { get; set; }
     public string CurrentClientName { get; set; }
-    public string ResourceName { get; set; }
     public bool IsNational { get; set; }
 }
 

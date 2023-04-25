@@ -6,15 +6,18 @@ namespace ResourceWebApi.Controllers.v1.ResourcesExtraSkills;
 [ApiVersion("1.0")]
 public class DeleteResourceExtraSkillsController : BaseApiController
 {
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteResourceExtraSkills(Guid id)
+    [HttpDelete]
+    public Task<IActionResult> DeleteResourceExtraSkills(DeleteResourceExtraSkillsCommand command, CancellationToken cancellationToken = default)
     {
-        return await ProcessDeleteResourceExtraSkills(id);
+        if (command is null)
+            throw new ArgumentNullException();
+
+        return ProcessDeleteResourceExtraSkills(command, cancellationToken);
     }
 
-    private async Task<IActionResult> ProcessDeleteResourceExtraSkills(Guid id)
+    private async Task<IActionResult> ProcessDeleteResourceExtraSkills(DeleteResourceExtraSkillsCommand command, CancellationToken cancellationToken = default)
     {
-        var result = await Mediator.Send(new DeleteResourceExtraSkillsCommand { Id = id });
-        return Ok(result);
+        await Mediator.Send(command, cancellationToken);
+        return NoContent();
     }
 }

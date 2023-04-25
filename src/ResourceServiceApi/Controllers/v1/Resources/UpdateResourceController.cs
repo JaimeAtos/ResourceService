@@ -12,19 +12,19 @@ public class UpdateResourceController : BaseApiController
     /// </summary>
     /// <param name="id">Guid of the resource</param>
     /// <param name="command">Json to send the request to update the resource using the Guid</param>
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateResource(Guid id, UpdateResourceCommand command)
+    [HttpPut]
+    public Task<IActionResult> UpdateResource(UpdateResourceCommand command, CancellationToken cancellationToken = default)
     {
 
-        if (id != command.Id)
-            return BadRequest();
+        if (command is null)
+            throw new ArgumentNullException($"The param {command} cannot be null");
 
-        return await ProcessUpdateResource(command);
+        return ProcessUpdateResource(command, cancellationToken);
     }
 
-    private async Task<IActionResult> ProcessUpdateResource(UpdateResourceCommand command)
+    private async Task<IActionResult> ProcessUpdateResource(UpdateResourceCommand command, CancellationToken cancellationToken = default)
     {
-        var result = await Mediator.Send(command);
-        return Ok(result);
+        await Mediator.Send(command, cancellationToken);
+        return NoContent();
     }
 }

@@ -10,9 +10,6 @@ namespace Application.Features.ResourcesSkills.Commands.UpdateResourceSkillComma
 
             RuleFor(r => r.ResourceId).NotEmpty().WithMessage("{PropertyName} cannot be empty");
 
-            RuleFor(r => r.ResourceName).NotEmpty().WithMessage("{PropertyName} cannot be empty")
-               .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
-
             RuleFor(r => r.SkillName).NotEmpty().WithMessage("{PropertyName} cannot be empty")
                .MaximumLength(100).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
 

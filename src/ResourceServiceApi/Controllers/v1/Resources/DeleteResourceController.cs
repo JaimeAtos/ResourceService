@@ -12,15 +12,18 @@ public class DeleteResourceController : BaseApiController
     /// <param name="id">Guid of the wantedd to delete resource</param>
     /// <response code="200">Id of the deleted resource</response>
     /// <exception cref="ArgumentNullException"></exception>
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteResource(Guid id)
+    [HttpDelete]
+    public Task<IActionResult> DeleteResource(DeleteResourceCommand command, CancellationToken cancellationToken = default)
     {
-        return await ProcessDeleteResource(id);
+        if (command is null)
+            throw new ArgumentNullException();
+
+        return ProcessDeleteResource(command, cancellationToken);
     }
 
-    private async Task<IActionResult> ProcessDeleteResource(Guid id)
+    private async Task<IActionResult> ProcessDeleteResource(DeleteResourceCommand command, CancellationToken cancellationToken = default)
     {
-        var result = await Mediator.Send(new DeleteResourceCommand { Id = id});
-        return Ok(result);
+        await Mediator.Send(command, cancellationToken);
+        return NoContent();
     }
 }
