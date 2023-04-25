@@ -52,6 +52,9 @@ namespace Persistence.Migrations
                     b.Property<DateTime?>("DateLastModify")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<byte>("Gcm")
+                        .HasColumnType("smallint");
+
                     b.Property<bool>("IsNational")
                         .HasColumnType("boolean");
 

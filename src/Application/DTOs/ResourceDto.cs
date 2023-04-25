@@ -14,4 +14,5 @@ public class ResourceDto
     public string NessieID { get; set; }
     public string CurrentClientName { get; set; }
     public bool IsNational { get; set; }
+    public byte Gcm {get ; set;}
 }

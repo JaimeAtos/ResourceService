@@ -20,7 +20,7 @@ public class GetAllResourcesQuery : IRequest<PagedResponse<List<ResourceDto>>>
     public string CurrentClientName { get; set; }
     public string ResourceName { get; set; }
     public bool IsNational { get; set; }
-    
+    public byte Gcm {get ; set;}
 }
 public class GetAllResourcesQueryHandler : IRequestHandler<GetAllResourcesQuery, PagedResponse<List<ResourceDto>>>
 {
@@ -37,7 +37,7 @@ public class GetAllResourcesQueryHandler : IRequestHandler<GetAllResourcesQuery,
     public async Task<PagedResponse<List<ResourceDto>>> Handle(GetAllResourcesQuery request, CancellationToken cancellationToken)
     {
         var pagination = new PagedResourcesSpecification(request.PageSize, request.PageNumber, request.WorkEmail, request.Phone, request.CurrentStateDescription,
-            request.CurrentPositionDescription,request.NessieID,request.CurrentClientName, request.ResourceName, request.IsNational);
+            request.CurrentPositionDescription,request.NessieID,request.CurrentClientName, request.ResourceName, request.IsNational, request.Gcm);
 
         var resource = await _repositoryAsync.ListAsync(pagination);
         var resourceDto = _mapper.Map<List<ResourceDto>>(resource);

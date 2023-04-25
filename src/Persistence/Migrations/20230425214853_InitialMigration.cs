@@ -31,6 +31,7 @@ namespace Persistence.Migrations
                     CurrentClientId = table.Column<Guid>(type: "uuid", nullable: true),
                     CurrentClientName = table.Column<string>(type: "text", nullable: true),
                     IsNational = table.Column<bool>(type: "boolean", nullable: false),
+                    Gcm = table.Column<byte>(type: "smallint", nullable: false),
                     State = table.Column<bool>(type: "boolean", nullable: false),
                     UserCreatorId = table.Column<Guid>(type: "uuid", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),

@@ -40,6 +40,7 @@ public class ResourceDbContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //TODO: Preguntar si es relación one to one o one to many
         modelBuilder.Entity<Resource>()
             .HasOne<ResourceSkills>()
             .WithOne()

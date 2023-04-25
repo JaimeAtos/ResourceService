@@ -6,7 +6,7 @@ namespace Application.Specification;
 public class PagedResourcesSpecification : Specification<Resource>
 {
     public PagedResourcesSpecification(int pageSize, int pageNumber, string workEmail, string phone, string currentStateDescription, 
-        string currentPositionDescription, string nessieId, string currentClientName, string resourceName, bool isNational)
+        string currentPositionDescription, string nessieId, string currentClientName, string resourceName, bool isNational, byte gcm)
     {
         Query.Skip((pageNumber - 1)* pageSize)
             .Take(pageSize);
@@ -34,6 +34,9 @@ public class PagedResourcesSpecification : Specification<Resource>
 
         if (isNational)
             Query.Search(x => x.IsNational.ToString(), "%" + isNational + "%");
+        
+        if (!string.IsNullOrEmpty(gcm.ToString()))
+            Query.Search(x => x.Gcm.ToString(), "%" + gcm + "%");
 
     }
 }

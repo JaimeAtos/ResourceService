@@ -39,7 +39,8 @@ namespace ResourceWebApi.Controllers.v1.Resources
                 CurrentPositionDescription = filters.CurrentPositionDescription,
                 NessieID = filters.NessieID,
                 CurrentClientName = filters.CurrentClientName,
-                IsNational = filters.IsNational
+                IsNational = filters.IsNational,
+                Gcm = filters.Gcm
             }));
         }
     }

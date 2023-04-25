@@ -21,6 +21,7 @@ public class UpdateResourceCommand : IRequest<Response<Guid>>
     public string NessieID { get; set; }
     public string CurrentClientName { get; set; }
     public bool IsNational { get; set; }
+    public byte Gcm {get ; set;}
 }
 
 public class UpdateResourceCommandHandler : IRequestHandler<UpdateResourceCommand, Response<Guid>>
@@ -61,6 +62,7 @@ public class UpdateResourceCommandHandler : IRequestHandler<UpdateResourceComman
         resource.NessieID = request.NessieID;
         resource.CurrentClientName = request.CurrentClientName;
         resource.IsNational = request.IsNational;
+        resource.Gcm = request.Gcm;
 
         await _repositoryAsync.UpdateAsync(resource);
 

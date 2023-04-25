@@ -43,5 +43,7 @@ public class UpdateResourceCommandValidator : AbstractValidator<UpdateResourceCo
             .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
         
         RuleFor(r => r.IsNational).Must(r => r == false || r == true);
+        
+        RuleFor(r => r.Gcm).NotEmpty().WithMessage("{PropertyName} cannot be empty");
     }
 }

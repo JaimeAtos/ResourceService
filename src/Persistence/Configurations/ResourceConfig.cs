@@ -21,5 +21,6 @@ public class ResourceConfig : IEntityTypeConfiguration<Resource>
         builder.Property(p => p.NessieID).HasDefaultValue("nvarchar(10)");
         builder.Property(p => p.CurrentClientName).HasDefaultValue("nvarchar(80)");
         builder.Property(p => p.IsNational).HasColumnType("bit").IsRequired();
+        builder.Property(p => p.Gcm).HasColumnType("byte").IsRequired();
     }
 }

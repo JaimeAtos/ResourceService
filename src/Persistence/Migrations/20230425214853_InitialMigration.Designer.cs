@@ -12,7 +12,7 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(ResourceDbContext))]
-    [Migration("20230424223041_InitialMigration")]
+    [Migration("20230425214853_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -54,6 +54,9 @@ namespace Persistence.Migrations
 
                     b.Property<DateTime?>("DateLastModify")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<byte>("Gcm")
+                        .HasColumnType("smallint");
 
                     b.Property<bool>("IsNational")
                         .HasColumnType("boolean");

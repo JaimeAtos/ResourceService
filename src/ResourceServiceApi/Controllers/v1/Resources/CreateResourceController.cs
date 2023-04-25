@@ -26,6 +26,6 @@ public class CreateResourceController : BaseApiController
     private async Task<IActionResult> ProcessCreateResource(CreateResourceCommand command, CancellationToken cancellationToken = default)
     {
         var result = await Mediator.Send(command, cancellationToken);
-        return CreatedAtRoute("GetResourceById", routeValues: new { id = result }, command);
+        return CreatedAtRoute("GetResourceById", routeValues: new { id = result.Data }, command);
     }
 }

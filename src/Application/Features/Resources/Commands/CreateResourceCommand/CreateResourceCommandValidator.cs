@@ -37,5 +37,7 @@ public class CreateResourceCommandValidator : AbstractValidator<CreateResourceCo
 
         RuleFor(r => r.CurrentClientName).NotEmpty().WithMessage("{PropertyName} cannot be empty")
           .MaximumLength(80).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");
+
+        RuleFor(r => r.Gcm).NotEmpty().WithMessage("{PropertyName} cannot be empty");
     }
 }

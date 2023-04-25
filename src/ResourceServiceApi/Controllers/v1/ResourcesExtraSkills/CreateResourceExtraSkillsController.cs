@@ -18,6 +18,6 @@ public class CreateResourceExtraSkillsController : BaseApiController
     private async Task<IActionResult> ProcessCreateResourceExtraSkills(CreateResourceExtraSkillsCommand command, CancellationToken cancellationToken = default)
     {
         var result = await Mediator.Send(command, cancellationToken);
-        return CreatedAtRoute("GetResourceExtraSkillsById", routeValues: new {id = result}, command);
+        return CreatedAtRoute("GetResourceExtraSkillsById", routeValues: new {id = result.Data}, command);
     }
 }

@@ -18,5 +18,6 @@ public class Resource : EntityBaseAuditable<Guid, Guid>
     public Guid? CurrentClientId { get; set; }
     public string? CurrentClientName { get; set; }
     public bool IsNational { get; set; }
+    public byte Gcm {get ; set;}
 }
 
