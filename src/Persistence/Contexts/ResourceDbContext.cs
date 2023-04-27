@@ -1,5 +1,5 @@
 ﻿using Application.Interfaces;
-using Atos.Core.Common;
+using Atos.Core.Commons;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
