@@ -16,6 +16,7 @@ public class GetAllResourceSkillsQuery : IRequest<PagedResponse<List<ResourceSki
     public string? SkillName { get; set; }
     public string? SkillAcceptanceURL { get; set; }
     public bool? IsCompliance { get; set; }
+    public bool State { get; set; }
 }
 
 public class GetAllResourceSkillsQueryHandler : IRequestHandler<GetAllResourceSkillsQuery, PagedResponse<List<ResourceSkillsDto>>>
@@ -32,7 +33,7 @@ public class GetAllResourceSkillsQueryHandler : IRequestHandler<GetAllResourceSk
     public async Task<PagedResponse<List<ResourceSkillsDto>>> Handle(GetAllResourceSkillsQuery request, CancellationToken cancellationToken)
     {
         var pagination = new PagedResourcesSkillsSpecification(request.PageSize, request.PageNumber, request.SkillName,
-            request.SkillAcceptanceURL, request.IsCompliance);
+            request.SkillAcceptanceURL, request.IsCompliance, request.State);
 
         var resourcesSkills = await _repositoryAsync.ListAsync(pagination);
 

@@ -19,5 +19,7 @@ public class Resource : EntityBaseAuditable<Guid, Guid>
     public string? CurrentClientName { get; set; }
     public bool IsNational { get; set; }
     public byte Gcm {get ; set;}
+    public ICollection<ResourceSkills> ResourceSkills { get; set; } = new List<ResourceSkills>();
+    public ICollection<ResourceExtraSkills> ResourceExtraSkills { get; set; } = new List<ResourceExtraSkills>();
 }
 

@@ -22,7 +22,8 @@ namespace ResourceWebApi.Controllers.v1.ResourcesSkills
                 PageSize = filters.PageSize,
                 SkillName = filters.SkillName,
                 SkillAcceptanceURL = filters.SkillAcceptanceURL,
-                IsCompliance = filters.IsCompliance
+                IsCompliance = filters.IsCompliance,
+                State = filters.State
             }));
         }
     }

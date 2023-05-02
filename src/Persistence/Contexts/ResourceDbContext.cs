@@ -40,17 +40,16 @@ public class ResourceDbContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        //TODO: Preguntar si es relación one to one o one to many
-        modelBuilder.Entity<Resource>()
-            .HasOne<ResourceSkills>()
-            .WithOne()
-            .HasForeignKey<ResourceSkills>(e => e.ResourceId)
+        modelBuilder.Entity<ResourceSkills>()
+            .HasOne(e => e.Resource)
+            .WithMany(e => e.ResourceSkills)
+            .HasForeignKey(e => e.ResourceId)
             .IsRequired();
         
-        modelBuilder.Entity<Resource>()
-            .HasOne<ResourceExtraSkills>()
-            .WithOne()
-            .HasForeignKey<ResourceExtraSkills>(e => e.ResourceId)
+        modelBuilder.Entity<ResourceExtraSkills>()
+            .HasOne(e => e.Resource)
+            .WithMany(e => e.ResourceExtraSkills)
+            .HasForeignKey(e => e.ResourceId)
             .IsRequired();
     }
     

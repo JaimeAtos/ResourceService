@@ -15,4 +15,6 @@ public class ResourceDto
     public string CurrentClientName { get; set; }
     public bool IsNational { get; set; }
     public byte Gcm {get ; set;}
+    public ICollection<ResourceSkillsDto> ResourceSkills { get; set; } = new List<ResourceSkillsDto>();
+    public ICollection<ResourceExtraSkillsDto> ResourceExtraSkills { get; set; } = new List<ResourceExtraSkillsDto>();
 }

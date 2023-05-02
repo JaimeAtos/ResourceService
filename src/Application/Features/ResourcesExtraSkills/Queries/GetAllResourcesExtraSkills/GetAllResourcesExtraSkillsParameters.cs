@@ -8,4 +8,5 @@ public class GetAllResourcesExtraSkillsParameters : RequestParameter
     public string? ExperienceOverallTypeTag { get; set; }
     public string? BriefDescription { get; set; }
     public bool? IsApproved { get; set; }
+    public bool State { get; set; }
 }

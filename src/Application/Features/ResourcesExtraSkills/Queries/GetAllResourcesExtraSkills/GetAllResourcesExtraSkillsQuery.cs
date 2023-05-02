@@ -16,6 +16,7 @@ public class GetAllResourcesExtraSkillsQuery : IRequest<PagedResponse<List<Resou
     public string? ExperienceOverallTypeTag { get; set; }
     public string? BriefDescription { get; set; }
     public bool? IsApproved { get; set; }
+    public bool State { get; set; }
 }
 
 public class GetAllResourcesExtraSkillsHandler : IRequestHandler<GetAllResourcesExtraSkillsQuery, PagedResponse<List<ResourceExtraSkillsDto>>>
@@ -31,7 +32,7 @@ public class GetAllResourcesExtraSkillsHandler : IRequestHandler<GetAllResources
     public async Task<PagedResponse<List<ResourceExtraSkillsDto>>> Handle(GetAllResourcesExtraSkillsQuery request, CancellationToken cancellationToken)
     {
         var pagination = new PagedResourcesExtraSkillsSpecification(request.PageSize, request.PageNumber, request.Title, 
-            request.ExperienceOverallTypeTag, request.BriefDescription, request.IsApproved);
+            request.ExperienceOverallTypeTag, request.BriefDescription, request.IsApproved, request.State);
 
         var resourcesExtraSkills = await _repositoryAsync.ListAsync(pagination);
 

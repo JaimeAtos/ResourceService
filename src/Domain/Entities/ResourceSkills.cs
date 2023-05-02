@@ -8,4 +8,5 @@ public class ResourceSkills : EntityBaseAuditable<Guid, Guid>
     public string SkillName { get; set; }
     public string SkillAcceptanceURL { get; set; } // Evidences of Validations
     public bool IsCompliance { get; set; } // False if resource needs to revalidate the skill
+    public Resource Resource { get; set; } = null!;
 }

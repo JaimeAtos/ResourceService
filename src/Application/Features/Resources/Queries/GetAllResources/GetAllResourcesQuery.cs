@@ -12,15 +12,17 @@ public class GetAllResourcesQuery : IRequest<PagedResponse<List<ResourceDto>>>
 {
     public int PageNumber { get; set; }
     public int PageSize { get; set; }
+    public Guid Id { get; set; }
+    public string ResourceName { get; set; }
     public string WorkEmail { get; set; }
     public string Phone { get; set; }
     public string CurrentStateDescription { get; set; }
     public string CurrentPositionDescription { get; set; }
     public string NessieID { get; set; }
     public string CurrentClientName { get; set; }
-    public string ResourceName { get; set; }
-    public bool IsNational { get; set; }
-    public byte Gcm {get ; set;}
+    public byte? Gcm {get ; set;}
+    public bool? IsNational { get; set; }
+    public bool State { get; set; }
 }
 public class GetAllResourcesQueryHandler : IRequestHandler<GetAllResourcesQuery, PagedResponse<List<ResourceDto>>>
 {
@@ -36,8 +38,7 @@ public class GetAllResourcesQueryHandler : IRequestHandler<GetAllResourcesQuery,
 
     public async Task<PagedResponse<List<ResourceDto>>> Handle(GetAllResourcesQuery request, CancellationToken cancellationToken)
     {
-        var pagination = new PagedResourcesSpecification(request.PageSize, request.PageNumber, request.WorkEmail, request.Phone, request.CurrentStateDescription,
-            request.CurrentPositionDescription,request.NessieID,request.CurrentClientName, request.ResourceName, request.IsNational, request.Gcm);
+        var pagination = new PagedResourcesSpecification(request);
 
         var resource = await _repositoryAsync.ListAsync(pagination);
         var resourceDto = _mapper.Map<List<ResourceDto>>(resource);

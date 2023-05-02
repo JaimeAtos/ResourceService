@@ -23,7 +23,8 @@ namespace ResourceWebApi.Controllers.v1.ResourcesExtraSkills
                 Title = filters.Title,
                 ExperienceOverallTypeTag = filters.ExperienceOverallTypeTag,
                 BriefDescription = filters.BriefDescription,
-                IsApproved = filters.IsApproved
+                IsApproved = filters.IsApproved,
+                State = filters.State
             }));
         }
     }

@@ -6,9 +6,9 @@ namespace Application.Specification;
 public class PagedResourcesExtraSkillsSpecification : Specification<ResourceExtraSkills>
 {
     public PagedResourcesExtraSkillsSpecification(int pageSize, int pageNumber, string title, string experienceOveralTypeTag,
-        string briefdescription, bool? isApproved)
+        string briefdescription, bool? isApproved, bool state)
     {
-        Query.Skip((pageNumber -1) * pageSize)
+        Query.Skip((pageNumber) * pageSize)
             .Take(pageSize);
 
         if(!string.IsNullOrEmpty(title))
@@ -22,5 +22,7 @@ public class PagedResourcesExtraSkillsSpecification : Specification<ResourceExtr
 
         if (!string.IsNullOrEmpty(isApproved.ToString()))
             Query.Search(x => x.IsApproved.ToString(), "%" + isApproved + "%");
+        
+        Query.Search(x => x.State.ToString(), state.ToString());
     }
 }

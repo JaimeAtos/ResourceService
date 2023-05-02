@@ -7,5 +7,6 @@ namespace Application.Features.ResourcesSkills.Queries.GetAllResourceSkills
         public string? SkillName { get; set; }
         public string? SkillAcceptanceURL { get; set; }
         public bool? IsCompliance { get; set; }
+        public bool State { get; set; }
     }
 }

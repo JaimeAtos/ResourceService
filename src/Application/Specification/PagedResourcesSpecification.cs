@@ -1,42 +1,43 @@
-﻿using Ardalis.Specification;
+﻿using Application.Features.Resources.Queries.GetAllResources;
+using Ardalis.Specification;
 using Domain.Entities;
 
 namespace Application.Specification;
 
 public class PagedResourcesSpecification : Specification<Resource>
 {
-    public PagedResourcesSpecification(int pageSize, int pageNumber, string workEmail, string phone, string currentStateDescription, 
-        string currentPositionDescription, string nessieId, string currentClientName, string resourceName, bool isNational, byte gcm)
+    public PagedResourcesSpecification(GetAllResourcesQuery request)
     {
-        Query.Skip((pageNumber - 1)* pageSize)
-            .Take(pageSize);
+        Query.Skip((request.PageNumber) * request.PageSize)
+            .Take(request.PageSize);
+
+        if (!string.IsNullOrEmpty(request.ResourceName))
+            Query.Search(x => x.ResourceName, "%" + request.ResourceName + "%");
+
+        if (!string.IsNullOrEmpty(request.WorkEmail))
+            Query.Search(x => x.WorkEmail, "%" + request.WorkEmail + "%");
+
+        if (!string.IsNullOrEmpty(request.Phone))
+            Query.Search(x => x.Phone, "%" + request.Phone + "%");
+
+        if (!string.IsNullOrEmpty(request.CurrentStateDescription))
+            Query.Search(x => x.CurrentStateDescription, "%" + request.CurrentStateDescription + "%");
+
+        if (!string.IsNullOrEmpty(request.CurrentPositionDescription))
+            Query.Search(x => x.CurrentPositionDescription, "%" + request.CurrentPositionDescription + "%");
+
+        if (!string.IsNullOrEmpty(request.NessieID))
+            Query.Search(x => x.NessieID, "%" + request.NessieID + "%");
+
+        if (!string.IsNullOrEmpty(request.CurrentClientName))
+            Query.Search(x => x.CurrentClientName, "%" + request.CurrentClientName + "%");
         
-        if (!string.IsNullOrEmpty(workEmail))
-            Query.Search(x => x.WorkEmail, "%" + workEmail + "%");
-
-        if (!string.IsNullOrEmpty(phone))
-            Query.Search(x => x.Phone, "%" + phone + "%");
-
-        if (!string.IsNullOrEmpty(currentStateDescription))
-            Query.Search(x => x.CurrentStateDescription, "%" + currentStateDescription + "%");
-
-        if (!string.IsNullOrEmpty(currentPositionDescription))
-            Query.Search(x => x.CurrentPositionDescription, "%" + currentPositionDescription + "%");
-
-        if (!string.IsNullOrEmpty(nessieId))
-            Query.Search(x => x.NessieID, "%" + nessieId + "%");
-
-        if (!string.IsNullOrEmpty(currentClientName))
-            Query.Search(x => x.CurrentClientName, "%" + currentClientName + "%");
+        if (!string.IsNullOrEmpty(request.Gcm.ToString()))
+            Query.Search(x => x.Gcm.ToString(), "%" + request.Gcm + "%");
         
-        if (!string.IsNullOrEmpty(resourceName))
-            Query.Search(x => x.ResourceName, "%" + resourceName + "%");
-
-        if (isNational)
-            Query.Search(x => x.IsNational.ToString(), "%" + isNational + "%");
+        if (!string.IsNullOrEmpty(request.IsNational.ToString()))
+            Query.Search(x => x.IsNational.ToString(), request.IsNational.ToString());
         
-        if (!string.IsNullOrEmpty(gcm.ToString()))
-            Query.Search(x => x.Gcm.ToString(), "%" + gcm + "%");
-
+        Query.Search(x => x.State.ToString(), request.State.ToString());
     }
 }
