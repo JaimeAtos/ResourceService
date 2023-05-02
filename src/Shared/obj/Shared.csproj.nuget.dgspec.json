@@ -1,27 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Shared\\Shared.csproj": {}
+    "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Shared/Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\Atos.Core\\src\\Atos.Core\\Atos.Core.csproj": {
+    "/media/thend/DATA/Development/RiderProjects/talent_management/Atos.Core/src/Atos.Core/Atos.Core.csproj": {
       "version": "1.0.28",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\Atos.Core\\src\\Atos.Core\\Atos.Core.csproj",
+        "projectUniqueName": "/media/thend/DATA/Development/RiderProjects/talent_management/Atos.Core/src/Atos.Core/Atos.Core.csproj",
         "projectName": "UPgrade.Microservice.SDK.Core",
-        "projectPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\Atos.Core\\src\\Atos.Core\\Atos.Core.csproj",
-        "packagesPath": "C:\\Users\\a875536\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\Atos.Core\\src\\Atos.Core\\obj\\",
+        "projectPath": "/media/thend/DATA/Development/RiderProjects/talent_management/Atos.Core/src/Atos.Core/Atos.Core.csproj",
+        "packagesPath": "/home/thend/.nuget/packages/",
+        "outputPath": "/media/thend/DATA/Development/RiderProjects/talent_management/Atos.Core/src/Atos.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\a875536\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/thend/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/home/thend/.nuget/local_source": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -81,36 +80,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.104/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Application\\Application.csproj": {
+    "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Application/Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Application\\Application.csproj",
+        "projectUniqueName": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Application/Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\a875536\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Application\\obj\\",
+        "projectPath": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Application/Application.csproj",
+        "packagesPath": "/home/thend/.nuget/packages/",
+        "outputPath": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\a875536\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/thend/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/home/thend/.nuget/local_source": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Domain\\Domain.csproj"
+              "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Domain/Domain.csproj": {
+                "projectPath": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Domain/Domain.csproj"
               }
             }
           }
@@ -166,36 +164,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.104/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Domain\\Domain.csproj": {
+    "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\a875536\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Domain\\obj\\",
+        "projectPath": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Domain/Domain.csproj",
+        "packagesPath": "/home/thend/.nuget/packages/",
+        "outputPath": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\a875536\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/thend/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/home/thend/.nuget/local_source": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\Atos.Core\\src\\Atos.Core\\Atos.Core.csproj": {
-                "projectPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\Atos.Core\\src\\Atos.Core\\Atos.Core.csproj"
+              "/media/thend/DATA/Development/RiderProjects/talent_management/Atos.Core/src/Atos.Core/Atos.Core.csproj": {
+                "projectPath": "/media/thend/DATA/Development/RiderProjects/talent_management/Atos.Core/src/Atos.Core/Atos.Core.csproj"
               }
             }
           }
@@ -225,36 +222,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.104/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Shared\\Shared.csproj": {
+    "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Shared/Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Shared\\Shared.csproj",
+        "projectUniqueName": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Shared/Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\a875536\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Shared\\obj\\",
+        "projectPath": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Shared/Shared.csproj",
+        "packagesPath": "/home/thend/.nuget/packages/",
+        "outputPath": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\a875536\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/thend/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/home/thend/.nuget/local_source": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\a875536\\OneDrive - Atos\\Documents\\APIs\\AtosBench\\ResourceService\\src\\Application\\Application.csproj"
+              "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Application/Application.csproj": {
+                "projectPath": "/media/thend/DATA/Development/RiderProjects/talent_management/ResourceService/src/Application/Application.csproj"
               }
             }
           }
@@ -284,7 +280,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/7.0.104/RuntimeIdentifierGraph.json"
         }
       }
     }
