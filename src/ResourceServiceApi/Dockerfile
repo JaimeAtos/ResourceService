@@ -5,6 +5,27 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /src
+
+COPY ["ResourceService", "ResourceService/"]
+COPY ["Atos.Core", "Atos.Core/"]
+
+RUN dotnet restore "ResourceService/src/ResourceServiceApi/ResourceServiceApi.csproj"
+
+COPY ResourceService/ .
+COPY Atos.Core/ .
+
+WORKDIR "/src/ResourceService/src/ResourceServiceApi/"
+
+RUN dotnet build "ResourceServiceApi.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "ResourceServiceApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+
 ARG dbpass
 ARG dbuser
 ARG dbhost
@@ -17,18 +38,6 @@ ENV DBHOST=$dbhost
 ENV DBPORT=$dbport
 ENV DBNAME=$dbname
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /src
-COPY ["ResourceWebApi/ResourceWebApi.csproj", "ResourceWebApi/"]
-RUN dotnet restore "ResourceWebApi/ResourceWebApi.csproj"
-COPY . .
-WORKDIR "/src/ResourceWebApi"
-RUN dotnet build "ResourceWebApi.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "ResourceWebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ResourceWebApi.dll"]
+ENTRYPOINT ["dotnet", "ResourceServiceApi.dll"]
