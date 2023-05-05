@@ -1,6 +1,7 @@
 ﻿using Application.Exceptions;
 using Application.Extensions;
 using Application.Interfaces;
+using Atos.Core.Abstractions.Publishers;
 using Atos.Core.EventsDTO;
 using Domain.Entities;
 using MassTransit;
@@ -19,27 +20,30 @@ public class UpdateResourceExtraSkillsCommand : IRequest<Wrappers.Response<Guid>
     public bool IsApproved { get; set; }
 }
 
-public class UpdateResourceExtraSkillsCommandHandler : IRequestHandler<UpdateResourceExtraSkillsCommand, Wrappers.Response<Guid>>
+public class
+    UpdateResourceExtraSkillsCommandHandler : IRequestHandler<UpdateResourceExtraSkillsCommand, Wrappers.Response<Guid>>
 {
     private readonly IRepositoryAsync<ResourceExtraSkills> _repositoryAsync;
-    private readonly IPublishEndpoint _publishEndpoint;
+    private readonly IPublisherCommands<ResourceExtraSkillUpdated> _publisherCommands;
 
-    public UpdateResourceExtraSkillsCommandHandler(IRepositoryAsync<ResourceExtraSkills> repositoryAsync, IPublishEndpoint publishEndpoint)
+    public UpdateResourceExtraSkillsCommandHandler(IRepositoryAsync<ResourceExtraSkills> repositoryAsync,
+        IPublisherCommands<ResourceExtraSkillUpdated> publisherCommands)
     {
-        _repositoryAsync=repositoryAsync;
-        _publishEndpoint=publishEndpoint;
+        _repositoryAsync = repositoryAsync;
+        _publisherCommands = publisherCommands;
     }
 
-    public Task<Wrappers.Response<Guid>> Handle(UpdateResourceExtraSkillsCommand request, CancellationToken cancellationToken)
+    public Task<Wrappers.Response<Guid>> Handle(UpdateResourceExtraSkillsCommand request,
+        CancellationToken cancellationToken)
     {
         if (request is null)
             throw new KeyNotFoundException();
 
         return ProcessHandle(request, cancellationToken);
-
     }
 
-    public async Task<Wrappers.Response<Guid>> ProcessHandle(UpdateResourceExtraSkillsCommand request, CancellationToken cancellationToken)
+    public async Task<Wrappers.Response<Guid>> ProcessHandle(UpdateResourceExtraSkillsCommand request,
+        CancellationToken cancellationToken)
     {
         var resourceExtraSkills = await _repositoryAsync.GetByIdAsync(request.Id);
         if (resourceExtraSkills is null)
@@ -54,20 +58,9 @@ public class UpdateResourceExtraSkillsCommandHandler : IRequestHandler<UpdateRes
 
         await _repositoryAsync.UpdateAsync(resourceExtraSkills);
 
-        await PublishUpdateResourceExtraSkillCommand(request.ToResourceExtraSkillUpdated(), cancellationToken);
+        await _publisherCommands.PublishEntityMessage(request.ToResourceExtraSkillUpdated(),
+            "resourceExtraSkill.updated", request.Id, cancellationToken);
 
         return new Wrappers.Response<Guid>(resourceExtraSkills.Id);
-    }
-    
-    private async Task PublishUpdateResourceExtraSkillCommand(ResourceExtraSkillUpdated request, CancellationToken cancellationToken)
-    {
-        await _publishEndpoint.Publish(
-            request,
-            ctx =>
-            {
-                ctx.MessageId = request.Id;
-                ctx.SetRoutingKey("resourceExtraSkill.updated");
-            },
-            cancellationToken);
     }
 }

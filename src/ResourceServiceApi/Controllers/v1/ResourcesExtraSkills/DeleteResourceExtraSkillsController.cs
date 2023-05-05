@@ -1,4 +1,5 @@
-﻿using Application.Features.ResourcesExtraSkills.DeleteResourceExtraSkillsCommand;
+﻿using Application.Features.ResourcesExtraSkills.Commands.DeleteResourceExtraSkillsCommand;
+using Application.Features.ResourcesExtraSkills.DeleteResourceExtraSkillsCommand;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ResourceWebApi.Controllers.v1.ResourcesExtraSkills;

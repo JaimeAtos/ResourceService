@@ -2,7 +2,7 @@
 
 namespace Application.Features.ResourcesExtraSkills.DeleteResourceExtraSkillsCommand;
 
-public class DeleteResourceExtraSkillsCommandValidator : AbstractValidator<DeleteResourceExtraSkillsCommand>
+public class DeleteResourceExtraSkillsCommandValidator : AbstractValidator<Commands.DeleteResourceExtraSkillsCommand.DeleteResourceExtraSkillsCommand>
 {
     public DeleteResourceExtraSkillsCommandValidator()
     {
