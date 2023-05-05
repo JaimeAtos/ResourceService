@@ -7,6 +7,8 @@ public class CreateResourceSkillsCommandValidator : AbstractValidator<CreateReso
     public CreateResourceSkillsCommandValidator()
     {
         RuleFor(r => r.ResourceId).NotEmpty().WithMessage("{PropertyName} cannot be empty");
+        
+        RuleFor(r => r.SkillId).NotEmpty().WithMessage("{PropertyName} cannot be empty");
 
         RuleFor(r => r.SkillName).NotEmpty().WithMessage("{PropertyName} cannot be empty")
            .MaximumLength(100).WithMessage("{PropertyName} must not exceed {MaxLength} characters of length");

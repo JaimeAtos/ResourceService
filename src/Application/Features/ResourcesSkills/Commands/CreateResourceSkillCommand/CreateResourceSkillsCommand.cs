@@ -10,6 +10,7 @@ public class CreateResourceSkillsCommand : IRequest<Response<Guid>>
 {
     public Guid ResourceId { get; set; }
     public string SkillName { get; set; }
+    public Guid SkillId { get; set; }
     public string SkillAcceptanceURL { get; set; } // Evidences of Validations
     public bool IsCompliance { get; set; } // False if resource needs to revalidate the skill
 }

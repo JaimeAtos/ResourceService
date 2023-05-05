@@ -1,26 +1,26 @@
-﻿using Ardalis.Specification;
+﻿using Application.Features.ResourcesSkills.Queries.GetAllResourceSkills;
+using Ardalis.Specification;
 using Domain.Entities;
 
 namespace Application.Specification
 {
     public class PagedResourcesSkillsSpecification : Specification<ResourceSkills>
     {
-        public PagedResourcesSkillsSpecification(int pageSize, int pageNumber, string skillName, 
-            string skillAcceptanceURL, bool? isCompliance, bool state)
+        public PagedResourcesSkillsSpecification(GetAllResourceSkillsQuery request)
         {
-            Query.Skip((pageNumber)* pageSize)
-            .Take(pageSize);
+            Query.Skip((request.PageNumber)* request.PageSize)
+            .Take(request.PageSize);
             
-            if (!string.IsNullOrEmpty(skillName))
-                Query.Search(x => x.SkillName, "%" + skillName + "%");
+            if (!string.IsNullOrEmpty(request.SkillName))
+                Query.Search(x => x.SkillName, "%" + request.SkillName + "%");
 
-            if (!string.IsNullOrEmpty(skillAcceptanceURL))
-                Query.Search(x => x.SkillAcceptanceURL, "%" + skillAcceptanceURL + "%");
+            if (!string.IsNullOrEmpty(request.SkillAcceptanceURL))
+                Query.Search(x => x.SkillAcceptanceURL, "%" + request.SkillAcceptanceURL + "%");
 
-            if (!string.IsNullOrEmpty(isCompliance.ToString()))
-                Query.Search(x => x.IsCompliance.ToString(), "%" + isCompliance + "%");
+            if (!string.IsNullOrEmpty(request.IsCompliance.ToString()))
+                Query.Search(x => x.IsCompliance.ToString(), "%" + request.IsCompliance + "%");
             
-            Query.Search(x => x.State.ToString(), state.ToString());
+            Query.Search(x => x.State.ToString(), request.State.ToString());
         }
     }
 }

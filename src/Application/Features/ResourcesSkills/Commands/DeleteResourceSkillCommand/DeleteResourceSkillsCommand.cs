@@ -1,7 +1,6 @@
 ﻿using Application.Exceptions;
 using Application.Interfaces;
 using Application.Wrappers;
-using AutoMapper;
 using Domain.Entities;
 using MediatR;
 
@@ -15,12 +14,10 @@ public class DeleteResourceSkillsCommand : IRequest<Response<Guid>>
 public class DeleteResourceSkillsCommandHandler : IRequestHandler<DeleteResourceSkillsCommand, Response<Guid>>
 {
     private readonly IRepositoryAsync<ResourceSkills> _repository;
-    private readonly IMapper _mapper;
 
-    public DeleteResourceSkillsCommandHandler(IRepositoryAsync<ResourceSkills> repository, IMapper mapper)
+    public DeleteResourceSkillsCommandHandler(IRepositoryAsync<ResourceSkills> repository)
     {
         _repository=repository;
-        _mapper=mapper;
     }
 
     public async Task<Response<Guid>> Handle(DeleteResourceSkillsCommand request, CancellationToken cancellationToken)

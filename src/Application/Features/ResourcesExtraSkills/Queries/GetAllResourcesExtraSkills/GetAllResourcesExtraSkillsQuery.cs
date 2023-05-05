@@ -31,8 +31,7 @@ public class GetAllResourcesExtraSkillsHandler : IRequestHandler<GetAllResources
     }
     public async Task<PagedResponse<List<ResourceExtraSkillsDto>>> Handle(GetAllResourcesExtraSkillsQuery request, CancellationToken cancellationToken)
     {
-        var pagination = new PagedResourcesExtraSkillsSpecification(request.PageSize, request.PageNumber, request.Title, 
-            request.ExperienceOverallTypeTag, request.BriefDescription, request.IsApproved, request.State);
+        var pagination = new PagedResourcesExtraSkillsSpecification(request);
 
         var resourcesExtraSkills = await _repositoryAsync.ListAsync(pagination);
 
