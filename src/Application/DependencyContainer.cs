@@ -9,6 +9,8 @@ using Application.Consumers.CatalogStateConsumers;
 using Application.Consumers.ClientConsumers;
 using Application.Consumers.PositionConsumers;
 using Application.Consumers.SkillConsumers;
+using Atos.Core.Abstractions.Publishers;
+using Atos.Core.Commons.Publishers;
 using Atos.Core.EventsDTO;
 using MassTransit;
 
@@ -21,6 +23,11 @@ public static class DependencyContainer
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateResourceCommand>());
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+        services.AddScoped<IPublisherCommands<ResourceUpdated>, PublisherCommands<ResourceUpdated>>();
+        services.AddScoped<IPublisherCommands<ResourceDeleted>, PublisherCommands<ResourceDeleted>>();
+        services.AddScoped<IPublisherCommands<ResourceExtraSkillUpdated>, PublisherCommands<ResourceExtraSkillUpdated>>();
+        services.AddScoped<IPublisherCommands<ResourceExtraSkillDeleted>, PublisherCommands<ResourceExtraSkillDeleted>>();
         
         services.AddMassTransit(cfg =>
         {

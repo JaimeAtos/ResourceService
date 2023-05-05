@@ -1,6 +1,7 @@
 ﻿using Application.Exceptions;
 using Application.Extensions;
 using Application.Interfaces;
+using Atos.Core.Abstractions.Publishers;
 using Atos.Core.EventsDTO;
 using Domain.Entities;
 using MassTransit;
@@ -31,12 +32,12 @@ public class UpdateResourceCommand : IRequest<Wrappers.Response<Guid>>
 public class UpdateResourceCommandHandler : IRequestHandler<UpdateResourceCommand, Wrappers.Response<Guid>>
 {
     private readonly IRepositoryAsync<Resource> _repositoryAsync;
-    private readonly IPublishEndpoint _publishEndpoint;
+    private readonly IPublisherCommands<ResourceUpdated> _publisherCommands;
 
-    public UpdateResourceCommandHandler(IRepositoryAsync<Resource> repositoryAsync, IPublishEndpoint publishEndpoint)
+    public UpdateResourceCommandHandler(IRepositoryAsync<Resource> repositoryAsync, IPublisherCommands<ResourceUpdated> publisherCommands)
     {
         _repositoryAsync=repositoryAsync;
-        _publishEndpoint = publishEndpoint;
+        _publisherCommands = publisherCommands;
     }
 
     public Task<Wrappers.Response<Guid>> Handle(UpdateResourceCommand request, CancellationToken cancellationToken)
@@ -71,20 +72,9 @@ public class UpdateResourceCommandHandler : IRequestHandler<UpdateResourceComman
         resource.Gcm = request.Gcm;
 
         await _repositoryAsync.UpdateAsync(resource);
-        await PublishUpdateResourceCommand(request.ToResourceUpdated(), cancellationToken);
+        await _publisherCommands.PublishEntityMessage(request.ToResourceUpdated(), "resource.updated", request.Id, cancellationToken);
 
         return new Wrappers.Response<Guid>(resource.Id);
     }
     
-    private async Task PublishUpdateResourceCommand(ResourceUpdated request, CancellationToken cancellationToken)
-    {
-        await _publishEndpoint.Publish(
-            request,
-            ctx =>
-            {
-                ctx.MessageId = request.Id;
-                ctx.SetRoutingKey("resource.updated");
-            },
-            cancellationToken);
-    }
 }
