@@ -32,8 +32,7 @@ public class GetAllResourceSkillsQueryHandler : IRequestHandler<GetAllResourceSk
 
     public async Task<PagedResponse<List<ResourceSkillsDto>>> Handle(GetAllResourceSkillsQuery request, CancellationToken cancellationToken)
     {
-        var pagination = new PagedResourcesSkillsSpecification(request.PageSize, request.PageNumber, request.SkillName,
-            request.SkillAcceptanceURL, request.IsCompliance, request.State);
+        var pagination = new PagedResourcesSkillsSpecification(request);
 
         var resourcesSkills = await _repositoryAsync.ListAsync(pagination);
 

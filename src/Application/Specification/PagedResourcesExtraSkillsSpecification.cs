@@ -1,28 +1,28 @@
-﻿using Ardalis.Specification;
+﻿using Application.Features.ResourcesExtraSkills.Queries.GetAllResourcesExtraSkills;
+using Ardalis.Specification;
 using Domain.Entities;
 
 namespace Application.Specification;
 
 public class PagedResourcesExtraSkillsSpecification : Specification<ResourceExtraSkills>
 {
-    public PagedResourcesExtraSkillsSpecification(int pageSize, int pageNumber, string title, string experienceOveralTypeTag,
-        string briefdescription, bool? isApproved, bool state)
+    public PagedResourcesExtraSkillsSpecification(GetAllResourcesExtraSkillsQuery request)
     {
-        Query.Skip((pageNumber) * pageSize)
-            .Take(pageSize);
+        Query.Skip((request.PageNumber) * request.PageSize)
+            .Take(request.PageSize);
 
-        if(!string.IsNullOrEmpty(title))
-            Query.Search(x => x.Title, "%" + title + "%");
+        if(!string.IsNullOrEmpty(request.Title))
+            Query.Search(x => x.Title, "%" + request.Title + "%");
 
-        if (!string.IsNullOrEmpty(experienceOveralTypeTag))
-            Query.Search(x => x.ExperienceOverallTypeTag, "%" + experienceOveralTypeTag + "%");
+        if (!string.IsNullOrEmpty(request.ExperienceOverallTypeTag))
+            Query.Search(x => x.ExperienceOverallTypeTag, "%" + request.ExperienceOverallTypeTag + "%");
 
-        if (!string.IsNullOrEmpty(briefdescription))
-            Query.Search(x => x.BriefDescription, "%" + briefdescription + "%");
+        if (!string.IsNullOrEmpty(request.BriefDescription))
+            Query.Search(x => x.BriefDescription, "%" + request.BriefDescription + "%");
 
-        if (!string.IsNullOrEmpty(isApproved.ToString()))
-            Query.Search(x => x.IsApproved.ToString(), "%" + isApproved + "%");
+        if (!string.IsNullOrEmpty(request.IsApproved.ToString()))
+            Query.Search(x => x.IsApproved.ToString(), "%" + request.IsApproved + "%");
         
-        Query.Search(x => x.State.ToString(), state.ToString());
+        Query.Search(x => x.State.ToString(), request.State.ToString());
     }
 }

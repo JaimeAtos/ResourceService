@@ -10,6 +10,8 @@
 *.userosscache
 *.sln.docstates
 postgresql/
+**/obj
+**/bin
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
