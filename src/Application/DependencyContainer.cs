@@ -8,6 +8,7 @@ using Application.Consumers.CatalogLocationConsumers;
 using Application.Consumers.CatalogStateConsumers;
 using Application.Consumers.ClientConsumers;
 using Application.Consumers.PositionConsumers;
+using Application.Consumers.ScreeningResourceExtraSkill;
 using Application.Consumers.SkillConsumers;
 using Atos.Core.Abstractions.Publishers;
 using Atos.Core.Commons.Publishers;
@@ -42,6 +43,7 @@ public static class DependencyContainer
             cfg.AddConsumer<CatalogLocationDeletedConsumer>();
             cfg.AddConsumer<CatalogStateUpdatedConsumer>();
             cfg.AddConsumer<CatalogStateDeletedConsumer>();
+            cfg.AddConsumer<ScreeningResourceExtraSkillCreatedConsumer>();
 
             cfg.UsingRabbitMq((ctx, cfgrmq) =>
             {
@@ -58,6 +60,7 @@ public static class DependencyContainer
                     econfigureEndpoint.ConfigureConsumer<CatalogLocationDeletedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<CatalogStateUpdatedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<CatalogStateDeletedConsumer>(ctx);
+                    econfigureEndpoint.ConfigureConsumer<ScreeningResourceExtraSkillCreatedConsumer>(ctx);
 
                     econfigureEndpoint.ConfigureConsumeTopology = false;
                     econfigureEndpoint.Durable = true;
@@ -95,11 +98,6 @@ public static class DependencyContainer
                         d.ExchangeType = "topic";
                         d.RoutingKey = "client.deleted";
                     });
-                    // econfigureEndpoint.Bind("Atos.Core.EventsDTO:ScreeningResourceExtraSkillUpdated", d =>
-                    // {
-                    //     d.ExchangeType = "topic";
-                    //     d.RoutingKey = "screeningResourceExtraSkill.updated";
-                    // });
                     econfigureEndpoint.Bind("Atos.Core.EventsDTO:CatalogLocationUpdated", d =>
                     {
                         d.ExchangeType = "topic";
@@ -119,6 +117,11 @@ public static class DependencyContainer
                     {
                         d.ExchangeType = "topic";
                         d.RoutingKey = "catalog.state.deleted";
+                    });
+                    econfigureEndpoint.Bind("Atos.Core.EventsDTO:ScreeningResourceExtraSkillCreated", d =>
+                    {
+                        d.ExchangeType = "topic";
+                        d.RoutingKey = "screeningResourceExtraSkill.created";
                     });
                 });
 
