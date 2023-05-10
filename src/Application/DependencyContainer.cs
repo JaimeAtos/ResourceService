@@ -50,6 +50,10 @@ public static class DependencyContainer
                 cfgrmq.Host("amqp://guest:guest@localhost:5672");
                 cfgrmq.ReceiveEndpoint("ResourceServiceQueue", econfigureEndpoint =>
                 {
+                    econfigureEndpoint.ConfigureConsumeTopology = false;
+                    econfigureEndpoint.Durable = true;
+                    
+                    // El ConfigureConsumer debe ir después del durable y la topology
                     econfigureEndpoint.ConfigureConsumer<SkillUpdatedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<SkillDeletedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<PositionUpdatedConsumer>(ctx);
@@ -61,9 +65,7 @@ public static class DependencyContainer
                     econfigureEndpoint.ConfigureConsumer<CatalogStateUpdatedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<CatalogStateDeletedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<ScreeningResourceExtraSkillCreatedConsumer>(ctx);
-
-                    econfigureEndpoint.ConfigureConsumeTopology = false;
-                    econfigureEndpoint.Durable = true;
+                    
                     econfigureEndpoint.UseMessageRetry(retryConfigure =>
                     {
                         retryConfigure.Interval(5, TimeSpan.FromMilliseconds(1000));
