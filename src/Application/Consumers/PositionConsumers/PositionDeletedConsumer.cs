@@ -14,7 +14,7 @@ public class PositionDeletedConsumer : IConsumer<PositionDeleted>
         _repository = repository;
     }
     
-    public async  Task Consume(ConsumeContext<PositionDeleted> context)
+    public async Task Consume(ConsumeContext<PositionDeleted> context)
     {
         var message = context.Message;
         var resources = await _repository.ListAsync();

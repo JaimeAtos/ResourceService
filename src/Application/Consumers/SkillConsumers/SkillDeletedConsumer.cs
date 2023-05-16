@@ -21,7 +21,8 @@ public class SkillDeletedConsumer : IConsumer<SkillDeleted>
 
         foreach (var resourceSkill in resourceSkills.Where(s => s.SkillId == message.Id))
         {
-            await _repository.DeleteAsync(resourceSkill);
+            resourceSkill.State = false;
+            await _repository.UpdateAsync(resourceSkill);
         }
     }
 }
