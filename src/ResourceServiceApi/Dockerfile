@@ -32,11 +32,21 @@ ARG dbhost
 ARG dbport
 ARG dbname
 
+ARG mqhost
+ARG mqport
+ARG mquser
+ARG mqpass
+
 ENV DBPASSWORD=$dbpass
 ENV DBUSER=$dbuser
 ENV DBHOST=$dbhost
 ENV DBPORT=$dbport
 ENV DBNAME=$dbname
+
+ENV MQUSER=$mquser
+ENV MQPASSWORD=$mqpassword
+ENV MQHOST=$mqhost
+ENV MQPORT=$port
 
 WORKDIR /app
 COPY --from=publish /app/publish .

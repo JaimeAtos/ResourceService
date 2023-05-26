@@ -16,9 +16,10 @@ using Atos.Core.EventsDTO;
 using MassTransit;
 
 namespace Application;
+
 public static class DependencyContainer
 {
-    public static void AddApplicationLayer(this IServiceCollection services)
+    public static IServiceCollection AddApplicationLayer(this IServiceCollection services)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
@@ -27,12 +28,19 @@ public static class DependencyContainer
 
         services.AddScoped<IPublisherCommands<ResourceUpdated>, PublisherCommands<ResourceUpdated>>();
         services.AddScoped<IPublisherCommands<ResourceDeleted>, PublisherCommands<ResourceDeleted>>();
-        services.AddScoped<IPublisherCommands<ResourceExtraSkillUpdated>, PublisherCommands<ResourceExtraSkillUpdated>>();
-        services.AddScoped<IPublisherCommands<ResourceExtraSkillDeleted>, PublisherCommands<ResourceExtraSkillDeleted>>();
-        
+        services
+            .AddScoped<IPublisherCommands<ResourceExtraSkillUpdated>, PublisherCommands<ResourceExtraSkillUpdated>>();
+        services
+            .AddScoped<IPublisherCommands<ResourceExtraSkillDeleted>, PublisherCommands<ResourceExtraSkillDeleted>>();
+        services.AddMassTransit();
+
+        return services;
+    }
+
+    public static IServiceCollection AddMassTransit(this IServiceCollection services)
+    {
         services.AddMassTransit(cfg =>
         {
-
             cfg.AddConsumer<SkillUpdatedConsumer>();
             cfg.AddConsumer<SkillDeletedConsumer>();
             cfg.AddConsumer<PositionUpdatedConsumer>();
@@ -47,12 +55,13 @@ public static class DependencyContainer
 
             cfg.UsingRabbitMq((ctx, cfgrmq) =>
             {
-                cfgrmq.Host("amqp://guest:guest@localhost:5672");
+                cfgrmq.Host(GetMessageBrokerUrl());
+
                 cfgrmq.ReceiveEndpoint("ResourceServiceQueue", econfigureEndpoint =>
                 {
                     econfigureEndpoint.ConfigureConsumeTopology = false;
                     econfigureEndpoint.Durable = true;
-                    
+
                     // El ConfigureConsumer debe ir después del durable y la topology
                     econfigureEndpoint.ConfigureConsumer<SkillUpdatedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<SkillDeletedConsumer>(ctx);
@@ -65,7 +74,7 @@ public static class DependencyContainer
                     econfigureEndpoint.ConfigureConsumer<CatalogStateUpdatedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<CatalogStateDeletedConsumer>(ctx);
                     econfigureEndpoint.ConfigureConsumer<ScreeningResourceExtraSkillCreatedConsumer>(ctx);
-                    
+
                     econfigureEndpoint.UseMessageRetry(retryConfigure =>
                     {
                         retryConfigure.Interval(5, TimeSpan.FromMilliseconds(1000));
@@ -127,24 +136,22 @@ public static class DependencyContainer
                     });
                 });
 
-                cfgrmq.Publish<ResourceUpdated>(x =>
-                {
-                    x.ExchangeType = "topic";
-                });
-                cfgrmq.Publish<ResourceDeleted>(x =>
-                {
-                    x.ExchangeType = "topic";
-                });
-                cfgrmq.Publish<ResourceExtraSkillUpdated>(x =>
-                {
-                    x.ExchangeType = "topic";
-                });
-                cfgrmq.Publish<ResourceExtraSkillDeleted>(x =>
-                {
-                    x.ExchangeType = "topic";
-                });
+                cfgrmq.Publish<ResourceUpdated>(x => { x.ExchangeType = "topic"; });
+                cfgrmq.Publish<ResourceDeleted>(x => { x.ExchangeType = "topic"; });
+                cfgrmq.Publish<ResourceExtraSkillUpdated>(x => { x.ExchangeType = "topic"; });
+                cfgrmq.Publish<ResourceExtraSkillDeleted>(x => { x.ExchangeType = "topic"; });
             });
-			
         });
+        return services;
+    }
+
+    private static string GetMessageBrokerUrl()
+    {
+        var messageBrokerHost = Environment.GetEnvironmentVariable("MQHOST");
+        var messageBrokerPort = Environment.GetEnvironmentVariable("MQPORT");
+        var user = Environment.GetEnvironmentVariable("MQUSER");
+        var password = Environment.GetEnvironmentVariable("MQPASSWORD");
+        var url = $"amqp://{user}:{password}@{messageBrokerHost}:{messageBrokerPort}";
+        return url;
     }
 }
